@@ -1,0 +1,29 @@
+{
+ "job": "ckptval",
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+ "precision": "bfloat16; router bias FP32",
+ "rows": [
+  {
+   "model": "Standard-W1",
+   "loss": 2.6529407346193503,
+   "release_loss": 2.6529409885406494,
+   "paper_loss": 2.653,
+   "sequences": 12160,
+   "tokens": 49807360,
+   "batch": 2,
+   "minutes": 6.909020025632344,
+   "finished_at": "2026-11-19T10:31:52.330807+00:00"
+  },
+  {
+   "model": "MBT-2-branch-W1",
+   "loss": 2.6199296179513607,
+   "release_loss": 2.619931221008301,
+   "paper_loss": 2.62,
+   "sequences": 12160,
+   "tokens": 49807360,
+   "batch": 1,
+   "minutes": 14.110715672383472,
+   "finished_at": "2026-11-19T10:46:06.285986+00:00"
+  }
+ ]
+}

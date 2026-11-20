@@ -1,0 +1,182 @@
+{
+ "title": "2027ECCV 실험 대시보드",
+ "kicker": "2027ECCV · 실험 관리",
+ "lede": "상위 = 수명주기, 하위 = 질문 하나짜리 탭. 결론·해석은 💡 인사이트에 남긴다.",
+ "footLeft": "2027ECCV · experiment-dashboard 스킬",
+ "kpis": [
+  {
+   "value": "3",
+   "label": "실험 수",
+   "tone": "good"
+  }
+ ],
+ "hero": null,
+ "navGroups": [
+  {
+   "id": "nav_viz",
+   "name": "시각화",
+   "groups": [
+    "g_viz"
+   ]
+  },
+  {
+   "id": "nav_pipe",
+   "name": "파이프라인",
+   "groups": [
+    "g_pipe"
+   ]
+  },
+  {
+   "id": "nav_perf",
+   "name": "성능",
+   "groups": [
+    "g_perf"
+   ]
+  },
+  {
+   "id": "nav_analysis",
+   "name": "분석",
+   "groups": [
+    "g_analysis"
+   ]
+  },
+  {
+   "id": "nav_impl",
+   "name": "구현 검증",
+   "groups": [
+    "g_impl"
+   ]
+  }
+ ],
+ "groups": [
+  {
+   "id": "g_viz",
+   "name": "샘플 뷰어",
+   "experiments": [
+    "ph_viz"
+   ]
+  },
+  {
+   "id": "g_pipe",
+   "name": "모델 구조",
+   "experiments": [
+    "ph_pipe"
+   ]
+  },
+  {
+   "id": "g_perf",
+   "name": "성능 표",
+   "experiments": [
+    "ph_perf"
+   ]
+  },
+  {
+   "id": "g_analysis",
+   "name": "무학습 MBT",
+   "experiments": [
+    "exp04",
+    "exp05",
+    "exp06"
+   ]
+  },
+  {
+   "id": "g_impl",
+   "name": "환경 재현",
+   "experiments": [
+    "exp01"
+   ]
+  }
+ ],
+ "experiments": {
+  "ph_viz": {
+   "num": "—",
+   "title": "샘플 뷰어",
+   "goal": "데이터·중간산출물을 눈으로 보는 범용 뷰어.",
+   "status": "빈 탭"
+  },
+  "ph_pipe": {
+   "num": "—",
+   "title": "모델 구조",
+   "goal": "모델 forward 흐름과 단계별 자원 분배.",
+   "status": "빈 탭"
+  },
+  "ph_perf": {
+   "num": "—",
+   "title": "성능 표",
+   "goal": "잡이 돌 때마다 같은 자리가 갱신되는 성능 표.",
+   "status": "빈 탭"
+  },
+  "exp01": {
+   "num": "01",
+   "title": "공개 체크포인트 검증 손실 재현",
+   "goal": "공개 체크포인트 2개(Standard-W1 · MBT-2-branch-W1)를 고정 검증셋 전체로 채점해, 이 서버 환경의 측정값을 체크포인트 동봉 기록·논문 표와 나란히 둔다.",
+   "metrics": [
+    {
+     "value": "2.6529",
+     "label": "Standard-W1 검증 손실"
+    },
+    {
+     "value": "2.6199",
+     "label": "MBT-2-branch-W1 검증 손실"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp04": {
+   "num": "04",
+   "title": "무학습 MBT — Qwen3-4B-Base 블록 재배치",
+   "goal": "사전학습된 Qwen3-4B-Base 의 블록 36개를 가중치 변경 없이 홀수·짝수 두 가지로 돌린 변형과 원본을 나란히 둔다. 라운드 1·2 = 이름 붙인 변형 7개(구간 × 평균 방식)의 WikiText-2 · C4 NLL · 라운드 3 = 이웃 쌍을 연속 N쌍 평균하는 모든 경우 171개의 NLL · 라운드 4 = 같은 변형들의 MMLU 5-shot 정확도(이름 붙인 8개는 test 전체, 전수 조사는 과목마다 앞 20문항).",
+   "metrics": [
+    {
+     "value": "2.0668",
+     "label": "원본 WikiText-2 NLL"
+    },
+    {
+     "value": "0.7309",
+     "label": "원본 MMLU 정확도(test 전체)"
+    },
+    {
+     "value": "171",
+     "label": "쌍마다 평균 전수 조사 변형 수"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp05": {
+   "num": "05",
+   "title": "무학습 MBT — Qwen3-VL-4B-Instruct 블록 재배치",
+   "goal": "시각-언어 모델 Qwen3-VL-4B-Instruct 의 언어 디코더 36블록을 Exp 04 와 같은 방식(이름 붙인 8개 + 쌍마다 평균 전수 조사 168개 = 176개)으로 재배치하고 MMMU validation 객관식 847문항 정확도를 잰다. 병렬로 돌려도 되는 구간이 텍스트 모델·텍스트 과제(Exp 04)와 같은 곳인지 본다.",
+   "metrics": [
+    {
+     "value": "0.5384",
+     "label": "원본 MMMU 정확도"
+    },
+    {
+     "value": "176",
+     "label": "변형 수"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp06": {
+   "num": "06",
+   "title": "레이어 병합 후속 — 인접 쌍 그리디 · 3개 병합 · 4층 블록 병합",
+   "goal": "Qwen3-4B-Base 의 원본 레이어를 가중치 변경 없이 그룹으로 병합(같은 입력 → 출력 균등 평균)했을 때 MMLU test 전체 정확도를 잰다. 인접 쌍 그리디 3라운드(35 · 34 · 33후보) · 3개 병합 9개 · 4층 블록 병합 8개로, 정확도를 얼마나 유지하면서 순차 깊이를 줄일 수 있는지 본다. 설계 JM Notion «레이어 병합 후속 실험».",
+   "metrics": [
+    {
+     "value": "0.7309",
+     "label": "원본 MMLU 정확도(Exp 04)"
+    },
+    {
+     "value": "0.7280",
+     "label": "그리디 3라운드 확정(순차 깊이 33)"
+    },
+    {
+     "value": "119",
+     "label": "구성 수"
+    }
+   ],
+   "status": "완료"
+  }
+ }
+}

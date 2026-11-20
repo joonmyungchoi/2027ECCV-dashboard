@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- 실험 대시보드 (제너릭 템플릿) — 구성은 data/dashboard.json, 실험별 렌더는 experiments/<id>.js -->
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>실험 대시보드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://cdn.plot.ly" />
+<!-- 웨이트는 화면에 실제로 쓰이는 것만 — 500 은 .kicker 한 곳뿐이라 700 으로 올리고 세 계열에서 뺐다(실측 ~220KB 절감).
+     Noto Sans KR 이 폰트 비용의 대부분이다(한글 UI라 필수). 더 줄이려면 800 을 빼면 되지만 h1 이 가벼워진다. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<!-- defer — 3.6MB plotly 다운로드·파싱이 HTML 렌더를 막지 않게. defer끼리는 순서 보장. -->
+<script defer src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="grain"></div>
+<header class="masthead" id="masthead">
+  <div class="mast-inner">
+    <div class="mast-title">
+      <span class="kicker" id="mastKicker"></span>
+      <h1 id="mastTitle"></h1>
+      <p class="lede" id="mastLede"></p>
+      <div class="mast-actions"><button id="btnShare" class="btn-ghost" type="button">⧉ 링크 복사</button></div>
+    </div>
+    <div class="mast-stat" id="mastStat"></div>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="주요 섹션"></nav>
+  <nav class="subtabs" id="subtabs" aria-label="하위 탭"></nav>
+</header>
+<main id="main"></main>
+<button id="toTop" title="맨 위로" type="button">↑</button>
+<footer class="foot"><span id="footLeft"></span><span id="footMeta"></span></footer>
+<script defer src="common.js"></script>
+<!-- 파이프라인 분석 엔진(모델 흐름도+Memory/Time/Attention). 미사용이면 로드만 되고 무해. 사용법: reference/PIPELINE_ANALYSIS.md -->
+<script defer src="app.js"></script>
+</body>
+</html>
