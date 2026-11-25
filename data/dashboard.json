@@ -1,0 +1,349 @@
+{
+ "title": "2027ECCV 실험 대시보드",
+ "kicker": "2027ECCV · 실험 관리",
+ "lede": "상위 = 수명주기, 하위 = 질문 하나짜리 탭. 결론·해석은 💡 인사이트에 남긴다.",
+ "footLeft": "2027ECCV · experiment-dashboard 스킬",
+ "kpis": [
+  {
+   "value": "3",
+   "label": "실험 수",
+   "tone": "good"
+  }
+ ],
+ "hero": null,
+ "navGroups": [
+  {
+   "id": "nav_viz",
+   "name": "시각화",
+   "groups": [
+    "g_viz"
+   ]
+  },
+  {
+   "id": "nav_pipe",
+   "name": "파이프라인",
+   "groups": [
+    "g_pipe"
+   ]
+  },
+  {
+   "id": "nav_perf",
+   "name": "성능",
+   "groups": [
+    "g_perf"
+   ]
+  },
+  {
+   "id": "nav_analysis",
+   "name": "분석",
+   "groups": [
+    "g_explist",
+    "g_exp01",
+    "g_exp04",
+    "g_exp05",
+    "g_exp06",
+    "g_exp07",
+    "g_exp08",
+    "g_exp09",
+    "g_exp10",
+    "g_exp11"
+   ]
+  },
+  {
+   "id": "nav_impl",
+   "name": "구현 검증",
+   "groups": [
+    "g_impl"
+   ]
+  }
+ ],
+ "groups": [
+  {
+   "id": "g_viz",
+   "name": "샘플 뷰어",
+   "experiments": [
+    "ph_viz"
+   ]
+  },
+  {
+   "id": "g_pipe",
+   "name": "모델 구조",
+   "experiments": [
+    "ph_pipe"
+   ]
+  },
+  {
+   "id": "g_perf",
+   "name": "성능 표",
+   "experiments": [
+    "ph_perf"
+   ]
+  },
+  {
+   "id": "g_explist",
+   "name": "실험 목록",
+   "experiments": [
+    "explist"
+   ]
+  },
+  {
+   "id": "g_exp01",
+   "name": "Exp 01",
+   "experiments": [
+    "exp01"
+   ]
+  },
+  {
+   "id": "g_exp04",
+   "name": "Exp 04",
+   "experiments": [
+    "exp04"
+   ]
+  },
+  {
+   "id": "g_exp05",
+   "name": "Exp 05",
+   "experiments": [
+    "exp05"
+   ]
+  },
+  {
+   "id": "g_exp06",
+   "name": "Exp 06",
+   "experiments": [
+    "exp06"
+   ]
+  },
+  {
+   "id": "g_exp07",
+   "name": "Exp 07",
+   "experiments": [
+    "exp07"
+   ]
+  },
+  {
+   "id": "g_impl",
+   "name": "구현 검증",
+   "experiments": [
+    "ph_impl"
+   ]
+  },
+  {
+   "id": "g_exp08",
+   "name": "Exp 08",
+   "experiments": [
+    "exp08"
+   ]
+  },
+  {
+   "id": "g_exp09",
+   "name": "Exp 09",
+   "experiments": [
+    "exp09"
+   ]
+  },
+  {
+   "id": "g_exp10",
+   "name": "Exp 10",
+   "experiments": [
+    "exp10"
+   ]
+  },
+  {
+   "id": "g_exp11",
+   "name": "Exp 11",
+   "experiments": [
+    "exp11"
+   ]
+  }
+ ],
+ "experiments": {
+  "ph_viz": {
+   "num": "—",
+   "title": "샘플 뷰어",
+   "goal": "데이터·중간산출물을 눈으로 보는 범용 뷰어.",
+   "status": "빈 탭"
+  },
+  "ph_pipe": {
+   "num": "—",
+   "title": "모델 구조",
+   "goal": "모델 forward 흐름과 단계별 자원 분배.",
+   "status": "빈 탭"
+  },
+  "ph_perf": {
+   "num": "—",
+   "title": "성능 표",
+   "goal": "잡이 돌 때마다 같은 자리가 갱신되는 성능 표.",
+   "status": "빈 탭"
+  },
+  "exp01": {
+   "num": "01",
+   "title": "공개 체크포인트 검증 손실 재현",
+   "goal": "공개 체크포인트 2개(Standard-W1 · MBT-2-branch-W1)를 고정 검증셋 전체로 채점해, 이 서버 환경의 측정값을 체크포인트 동봉 기록·논문 표와 나란히 둔다.",
+   "metrics": [
+    {
+     "value": "2.6529",
+     "label": "Standard-W1 검증 손실"
+    },
+    {
+     "value": "2.6199",
+     "label": "MBT-2-branch-W1 검증 손실"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp04": {
+   "num": "04",
+   "title": "무학습 MBT — Qwen3-4B-Base 블록 재배치",
+   "goal": "사전학습된 Qwen3-4B-Base 의 블록 36개를 가중치 변경 없이 홀수·짝수 두 가지로 돌린 변형과 원본을 나란히 둔다. 라운드 1·2 = 이름 붙인 변형 7개(구간 × 평균 방식)의 WikiText-2 · C4 NLL · 라운드 3 = 이웃 쌍을 연속 N쌍 평균하는 모든 경우 171개의 NLL · 라운드 4 = 같은 변형들의 MMLU 5-shot 정확도(이름 붙인 8개는 test 전체, 전수 조사는 과목마다 앞 20문항).",
+   "metrics": [
+    {
+     "value": "2.0668",
+     "label": "원본 WikiText-2 NLL"
+    },
+    {
+     "value": "0.7309",
+     "label": "원본 MMLU 정확도(test 전체)"
+    },
+    {
+     "value": "171",
+     "label": "쌍마다 평균 전수 조사 변형 수"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp05": {
+   "num": "05",
+   "title": "무학습 MBT — Qwen3-VL-4B-Instruct 블록 재배치",
+   "goal": "시각-언어 모델 Qwen3-VL-4B-Instruct 의 언어 디코더 36블록을 Exp 04 와 같은 방식(이름 붙인 8개 + 쌍마다 평균 전수 조사 168개 = 176개)으로 재배치하고 MMMU validation 객관식 847문항 정확도를 잰다. 병렬로 돌려도 되는 구간이 텍스트 모델·텍스트 과제(Exp 04)와 같은 곳인지 본다.",
+   "metrics": [
+    {
+     "value": "0.5384",
+     "label": "원본 MMMU 정확도"
+    },
+    {
+     "value": "176",
+     "label": "변형 수"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp06": {
+   "num": "06",
+   "title": "레이어 병합 후속 — 인접 쌍 그리디 · 3개 병합 · 4층 블록 병합 · 정렬 누적",
+   "goal": "원본 레이어를 가중치 변경 없이 그룹으로 병합(같은 입력 → 출력 균등 평균)했을 때 정확도를 잰다. 그리디 20라운드(고정 세팅) · 3개 병합 9 · 4층 블록 병합 8 · 정렬 누적 k=2..20. 세팅 3개 — MMLU test 전체(그리디 4라운드에서 중단) · 고정 세팅 MMLU 1,140 · 고정 세팅 MMMU 847(Qwen3-VL). 설계 JM Notion «레이어 병합 후속 실험». 고정 세팅 MMLU 1,140 으로 고른 확정 구성 20개는 MMLU test 전체 14,042 로도 다시 쟀다.",
+   "metrics": [
+    {
+     "value": "0.3254",
+     "label": "MMLU 1,140 그리디 20라운드(깊이 16)"
+    },
+    {
+     "value": "0.3070",
+     "label": "MMMU 847 그리디 20라운드(깊이 16)"
+    },
+    {
+     "value": "3",
+     "label": "세팅 수"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp07": {
+   "num": "07",
+   "title": "공식 절차 MMMU 재현 — Qwen3-VL-4B-Instruct 원본",
+   "goal": "Qwen3-VL-4B-Instruct 원본을 Qwen 공식 MMMU 평가 절차(QwenLM/Qwen3-VL @ f8dca99 evaluation/mmmu — 프롬프트·이미지 크기·샘플링·최대 32,768 토큰·답 추출)로 MMMU validation 900문항에 돌려, 이 환경의 측정값을 공식 보고치와 나란히 둔다.",
+   "metrics": [
+    {
+     "value": "0.6733",
+     "label": "이 서버 측정 MMMU 정확도"
+    },
+    {
+     "value": "0.674",
+     "label": "공식 보고치"
+    },
+    {
+     "value": "900",
+     "label": "문항 수(validation)"
+    }
+   ],
+   "status": "완료"
+  },
+  "ph_impl": {
+   "num": "—",
+   "title": "구현 검증",
+   "goal": "이식·주입 지점·신호 오염이 옳은가/등가인가를 보는 자리. 실험 탭은 분석 > Exp ## 로 옮겼다.",
+   "status": "빈 탭"
+  },
+  "exp08": {
+   "num": "08",
+   "title": "순차 깊이 1 줄이기 ablation — 병렬 · 지우기 · 가중치 평균",
+   "goal": "인접 쌍 (i, i+1) 자리에서 순차 깊이를 1 줄이는 방법 넷(병렬 출력 평균 · 레이어 i 지우기 · 레이어 i+1 지우기 · 두 레이어 가중치 평균)을 고정 세팅 MMLU 1,140(Qwen3-4B-Base)·MMMU 847(Qwen3-VL-4B-Instruct)에서 35쌍 전부 잰다. 설계 JM(2026-11-24).",
+   "metrics": [
+    {
+     "value": "0.7375",
+     "label": "MMLU 병렬 35쌍 평균"
+    },
+    {
+     "value": "0.5141",
+     "label": "MMMU 병렬 35쌍 평균"
+    },
+    {
+     "value": "71 × 2",
+     "label": "구성 수(지우기 36 + 가중치 평균 35)"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp09": {
+   "num": "09",
+   "title": "어텐션 프로젝션 공유 — 병합 그룹 안에서 Q · K·V 를 같이 쓰기",
+   "goal": "Exp 06 그리디 10~15라운드 확정 구성(순차 깊이 26~21)에서 병합 그룹 안 레이어끼리 Q · K·V · Q·K·V 프로젝션을 공유하거나(출력 결합 · 가중치 결합 2종) 레이어 전체를 평균했을 때의 정확도를 고정 세팅 MMLU 1,140(Qwen3-4B-Base)·MMMU 847(Qwen3-VL-4B-Instruct)에서 잰다. 라운드 2 — 인접 쌍 하나만 K·V 공유(35쌍 × 3방식) · 헤드 정렬 후 K·V 공유(18구성). 제안 이상혁 · 설계 JM(2026-11-25).",
+   "metrics": [
+    {
+     "value": "60 × 2",
+     "label": "1차 구성 수"
+    },
+    {
+     "value": "105 × 2",
+     "label": "쌍 하나 K·V 공유 구성 수"
+    },
+    {
+     "value": "18 × 2",
+     "label": "헤드 정렬 구성 수"
+    }
+   ],
+   "status": "완료"
+  },
+  "explist": {
+   "num": "—",
+   "title": "실험 목록",
+   "goal": "Exp 별 세부 실험 한눈에 보기.",
+   "metrics": [],
+   "status": "조회"
+  },
+  "exp10": {
+   "num": "10",
+   "title": "무학습 K·V 공유 규칙 — 병합 그룹의 KV 캐시를 하나로 만드는 12가지 방법",
+   "goal": "Exp 06 그리디 6~12라운드 확정 구성(순차 깊이 30~24)에서 병합 그룹마다 K·V 를 하나로 공유하는 규칙 12개(원래 가중치 균등 평균 · 게인 접은 균등 평균 · SVD 병합 A · B(λ 0.25 · 0.5 · 1.0) · 혼합 규칙 ii~vii)의 정확도를 고정 세팅 MMLU 1,140(Qwen3-4B-Base)·MMMU 847(Qwen3-VL-4B-Instruct)에서 잰다. 규칙 정의는 논문 초안 3.3 절 · 설계 JM(2026-11-25).",
+   "metrics": [
+    {
+     "value": "84 × 2",
+     "label": "구성 수(깊이 7 × 규칙 12)"
+    }
+   ],
+   "status": "완료"
+  },
+  "exp11": {
+   "num": "11",
+   "title": "정렬 뒤 K·V 공유 — KV 공유 정확도로 고른 그리디와 정렬 뒤 규칙",
+   "goal": "논문 초안 3.3 절의 정렬(K 는 회전 쌍 부호 · V 는 직교 행렬 · 기준은 그룹 맨 앞 레이어)을 건 뒤 병합 그룹마다 K·V 를 하나로 공유한다. 그리디 탐색의 점수를 «정렬 + 균등 평균 K·V 공유 정확도» 로 바꿔 순차 깊이 35~24 의 구성을 다시 찾고, 그 구성(깊이 30~24)에서 Exp 10 의 규칙들을 정렬 뒤에 다시 잰다. 고정 세팅 MMLU 1,140(Qwen3-4B-Base)·MMMU 847(Qwen3-VL-4B-Instruct). 설계 JM(2026-11-26).",
+   "metrics": [
+    {
+     "value": "443 × 2",
+     "label": "구성 수(그리디 354 + 공유 없음 12 + 규칙 11 × 깊이 7)"
+    }
+   ],
+   "status": "완료"
+  }
+ }
+}
